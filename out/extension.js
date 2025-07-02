@@ -40,23 +40,23 @@ const child_process = __importStar(require("child_process"));
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 function activate(context) {
-    console.log('Cursor2DevEco extension is now active!');
+    console.log('Switch2DevEco extension is now active!');
     // 显示安装成功提示
-    const config = vscode.workspace.getConfiguration('cursor2deveco');
+    const config = vscode.workspace.getConfiguration('switch2deveco');
     const showToasts = config.get('showToasts', true);
     if (showToasts) {
-        vscode.window.showInformationMessage('Cursor2DevEco 插件已激活! 快捷键: Alt+Shift+O (打开文件), Alt+Shift+P (打开项目)', '了解更多', '设置').then(selection => {
+        vscode.window.showInformationMessage('Switch2DevEco 插件已激活! 快捷键: Alt+Shift+O (打开文件), Alt+Shift+P (打开项目)', '了解更多', '设置').then(selection => {
             if (selection === '设置') {
-                vscode.commands.executeCommand('workbench.action.openSettings', 'cursor2deveco');
+                vscode.commands.executeCommand('workbench.action.openSettings', 'switch2deveco');
             }
             else if (selection === '了解更多') {
-                vscode.env.openExternal(vscode.Uri.parse('https://github.com/your-name/cursor2deveco'));
+                vscode.env.openExternal(vscode.Uri.parse('https://github.com/lingjye/switch2deveco'));
             }
         });
     }
     // 检查DevEco Studio是否存在
     function checkDevEcoStudio() {
-        const config = vscode.workspace.getConfiguration('cursor2deveco');
+        const config = vscode.workspace.getConfiguration('switch2deveco');
         const devEcoPath = config.get('devEcoPath') || '/Applications/DevEco-Studio.app';
         if (fs.existsSync(devEcoPath)) {
             return devEcoPath;
@@ -76,7 +76,7 @@ function activate(context) {
         return null;
     }
     // 打开当前文件
-    const openFileCommand = vscode.commands.registerCommand('cursor2deveco.openFile', async () => {
+    const openFileCommand = vscode.commands.registerCommand('switch2deveco.openFile', async () => {
         console.log('openFile command triggered');
         try {
             const editor = vscode.window.activeTextEditor;
@@ -92,7 +92,7 @@ function activate(context) {
             if (!devEcoPath) {
                 const result = await vscode.window.showErrorMessage('❌ 未找到 DevEco Studio，请检查安装路径', '设置路径', '下载 DevEco Studio');
                 if (result === '设置路径') {
-                    vscode.commands.executeCommand('workbench.action.openSettings', 'cursor2deveco.devEcoPath');
+                    vscode.commands.executeCommand('workbench.action.openSettings', 'switch2deveco.devEcoPath');
                 }
                 else if (result === '下载 DevEco Studio') {
                     vscode.env.openExternal(vscode.Uri.parse('https://developer.harmonyos.com/cn/develop/deveco-studio'));
@@ -114,10 +114,10 @@ function activate(context) {
                     console.error(`Error: ${error}`);
                     vscode.window.showErrorMessage(`❌ 打开 DevEco Studio 失败: ${error.message}`, '重试', '设置路径').then(selection => {
                         if (selection === '重试') {
-                            vscode.commands.executeCommand('cursor2deveco.openFile');
+                            vscode.commands.executeCommand('switch2deveco.openFile');
                         }
                         else if (selection === '设置路径') {
-                            vscode.commands.executeCommand('workbench.action.openSettings', 'cursor2deveco.devEcoPath');
+                            vscode.commands.executeCommand('workbench.action.openSettings', 'switch2deveco.devEcoPath');
                         }
                     });
                     return;
@@ -126,7 +126,7 @@ function activate(context) {
                     console.warn(`Stderr: ${stderr}`);
                 }
                 console.log(`Stdout: ${stdout}`);
-                const config = vscode.workspace.getConfiguration('cursor2deveco');
+                const config = vscode.workspace.getConfiguration('switch2deveco');
                 const showToasts = config.get('showToasts', true);
                 if (showToasts) {
                     vscode.window.showInformationMessage(`✅ 已在 DevEco Studio 中打开文件: ${path.basename(filePath)}`);
@@ -139,7 +139,7 @@ function activate(context) {
         }
     });
     // 打开当前项目
-    const openProjectCommand = vscode.commands.registerCommand('cursor2deveco.openProject', async () => {
+    const openProjectCommand = vscode.commands.registerCommand('switch2deveco.openProject', async () => {
         console.log('openProject command triggered');
         try {
             const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -153,7 +153,7 @@ function activate(context) {
             if (!devEcoPath) {
                 const result = await vscode.window.showErrorMessage('❌ 未找到 DevEco Studio，请检查安装路径', '设置路径', '下载 DevEco Studio');
                 if (result === '设置路径') {
-                    vscode.commands.executeCommand('workbench.action.openSettings', 'cursor2deveco.devEcoPath');
+                    vscode.commands.executeCommand('workbench.action.openSettings', 'switch2deveco.devEcoPath');
                 }
                 else if (result === '下载 DevEco Studio') {
                     vscode.env.openExternal(vscode.Uri.parse('https://developer.harmonyos.com/cn/develop/deveco-studio'));
@@ -175,10 +175,10 @@ function activate(context) {
                     console.error(`Error: ${error}`);
                     vscode.window.showErrorMessage(`❌ 打开 DevEco Studio 失败: ${error.message}`, '重试', '设置路径').then(selection => {
                         if (selection === '重试') {
-                            vscode.commands.executeCommand('cursor2deveco.openProject');
+                            vscode.commands.executeCommand('switch2deveco.openProject');
                         }
                         else if (selection === '设置路径') {
-                            vscode.commands.executeCommand('workbench.action.openSettings', 'cursor2deveco.devEcoPath');
+                            vscode.commands.executeCommand('workbench.action.openSettings', 'switch2deveco.devEcoPath');
                         }
                     });
                     return;
@@ -187,7 +187,7 @@ function activate(context) {
                     console.warn(`Stderr: ${stderr}`);
                 }
                 console.log(`Stdout: ${stdout}`);
-                const config = vscode.workspace.getConfiguration('cursor2deveco');
+                const config = vscode.workspace.getConfiguration('switch2deveco');
                 const showToasts = config.get('showToasts', true);
                 if (showToasts) {
                     vscode.window.showInformationMessage(`✅ 已在 DevEco Studio 中打开项目: ${path.basename(workspacePath)}`);
@@ -202,6 +202,6 @@ function activate(context) {
     context.subscriptions.push(openFileCommand, openProjectCommand);
 }
 function deactivate() {
-    console.log('Cursor2DevEco extension is now deactivated!');
+    console.log('Switch2DevEco extension is now deactivated!');
 }
 //# sourceMappingURL=extension.js.map

@@ -1,9 +1,9 @@
 {
-    "name": "cursor2deveco",
-    "displayName": "Cursor2DevEco",
+    "name": "switch2deveco",
+    "displayName": "Switch2DevEco",
     "description": "Open files or projects in DevEco Studio from Cursor.",
     "version": "1.0.2",
-    "publisher": "yibo",
+    "publisher": "lingjye",
     "icon": "icon.png",
     "repository": {
         "type": "git",
@@ -16,8 +16,8 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:cursor2deveco.openFile",
-        "onCommand:cursor2deveco.openProject",
+        "onCommand:switch2deveco.openFile",
+        "onCommand:switch2deveco.openProject",
         "onStartupFinished"
     ],
     "main": "./out/extension.js",
@@ -34,25 +34,25 @@
     "contributes": {
         "commands": [
             {
-                "command": "cursor2deveco.openFile",
+                "command": "switch2deveco.openFile",
                 "title": "Open File in DevEco Studio",
-                "category": "Cursor2DevEco"
+                "category": "Switch2DevEco"
             },
             {
-                "command": "cursor2deveco.openProject",
+                "command": "switch2deveco.openProject",
                 "title": "Open Project in DevEco Studio",
-                "category": "Cursor2DevEco"
+                "category": "Switch2DevEco"
             }
         ],
         "keybindings": [
             {
-                "command": "cursor2deveco.openFile",
+                "command": "switch2deveco.openFile",
                 "key": "alt+shift+o",
                 "mac": "alt+shift+o",
                 "when": "editorTextFocus"
             },
             {
-                "command": "cursor2deveco.openProject",
+                "command": "switch2deveco.openProject",
                 "key": "alt+shift+p",
                 "mac": "alt+shift+p"
             }
@@ -60,33 +60,33 @@
         "menus": {
             "editor/context": [
                 {
-                    "command": "cursor2deveco.openFile",
+                    "command": "switch2deveco.openFile",
                     "group": "navigation@1"
                 }
             ],
             "explorer/context": [
                 {
-                    "command": "cursor2deveco.openFile",
+                    "command": "switch2deveco.openFile",
                     "group": "navigation@1",
                     "when": "!explorerResourceIsFolder"
                 },
                 {
-                    "command": "cursor2deveco.openProject",
+                    "command": "switch2deveco.openProject",
                     "group": "navigation@2",
                     "when": "explorerResourceIsFolder"
                 }
             ]
         },
         "configuration": {
-            "title": "Cursor2DevEco",
+            "title": "Switch2DevEco",
             "properties": {
-                "cursor2deveco.devEcoPath": {
+                "switch2deveco.devEcoPath": {
                     "type": "string",
                     "default": "/Applications/DevEco-Studio.app",
                     "description": "Path to DevEco Studio executable.",
                     "scope": "machine"
                 },
-                "cursor2deveco.showToasts": {
+                "switch2deveco.showToasts": {
                     "type": "boolean",
                     "default": true,
                     "description": "Show toast notifications when opening files/projects in DevEco Studio.",
