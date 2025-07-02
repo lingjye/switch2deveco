@@ -2,12 +2,12 @@
     "name": "cursor2deveco",
     "displayName": "Cursor2DevEco",
     "description": "Open files or projects in DevEco Studio from Cursor.",
-    "version": "1.0.1",
-    "publisher": "your-name",
+    "version": "1.0.2",
+    "publisher": "yibo",
     "icon": "icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/your-name/cursor2deveco.git"
+        "url": "https://github.com/lingjye/switch2deveco.git"
     },
     "engines": {
         "vscode": "^1.93.0"
@@ -61,8 +61,7 @@
             "editor/context": [
                 {
                     "command": "cursor2deveco.openFile",
-                    "group": "navigation@1",
-                    "when": "resourceExtname =~ /\\.(ts|js|ets|tsx|jsx)$/"
+                    "group": "navigation@1"
                 }
             ],
             "explorer/context": [

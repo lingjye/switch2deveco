@@ -8,6 +8,7 @@
 **/.settings
 **/.vscode
 *.iml
+*.vsix
 .DS_Store
 .cxx
 .gradle
