@@ -1,0 +1,16 @@
+/build
+/node_modules
+/local.properties
+/.idea
+**/build
+**/node_modules
+**/.cxx
+**/.settings
+**/.vscode
+*.iml
+.DS_Store
+.cxx
+.gradle
+.idea
+.temp
+.vscode
